@@ -1,5 +1,6 @@
 {
   "name": "sharpapi/laravel-job-positions-api",
+  "version": "1.0.1",
   "description": "Job Positions API for Laravel powered by SharpAPI.com",
   "keywords": [
     "sharpapi",

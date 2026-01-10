@@ -51,11 +51,7 @@ class JobPositionsApiService extends SharpApiClient
             $params['per_page'] = $limit;
         }
 
-        $response = $this->makeRequest(
-            'GET',
-            '/utilities/job_positions_list',
-            $params
-        );
+        $response = $this->makeGetRequest('/utilities/job_positions_list', $params);
 
         $responseData = json_decode((string) $response->getBody(), true);
         $results = $responseData['data'] ?? [];
@@ -82,12 +78,11 @@ class JobPositionsApiService extends SharpApiClient
     {
         // Since there doesn't seem to be a direct endpoint for getting a job position by ID,
         // we'll get the full list and filter it
-        $response = $this->makeRequest(
-            'GET',
+        $response = $this->makeGetRequest(
             '/utilities/job_positions_list',
             ['per_page' => 100] // Get a larger number of results to increase chances of finding the position
         );
-        
+
         $responseData = json_decode((string) $response->getBody(), true);
         $positions = $responseData['data'] ?? [];
         
